@@ -1,0 +1,302 @@
+{
+    "error": true,
+    "message": "Fram List.",
+    "data": [{
+
+            "image": "/images/01.png",
+            "image_type": "english",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+
+        {
+
+            "image": "/images/01.png",
+            "image_type": "gujarati",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+
+        {
+
+            "image": "/images/01.png",
+            "image_type": "hindi",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+
+        {
+
+            "image": "/images/01.png",
+            "image_type": "bengali",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+
+        {
+
+            "image": "/images/01.png",
+            "image_type": "marathi",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+
+        {
+
+            "image": "/images/01.png",
+            "image_type": "tamil",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+        {
+
+            "image": "/images/01.png",
+            "image_type": "kannada",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+        {
+
+            "image": "/images/01.png",
+            "image_type": "telugu",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+        {
+
+            "image": "/images/01.png",
+            "image_type": "oriya",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        },
+        {
+
+            "image": "/images/01.png",
+            "image_type": "malayalam",
+            "fram-no": "1",
+            "add-font-type": "Roboto",
+            "add-font-size": "7px",
+            "add-font-color": "#FFFFFF",
+            "add-top": "42%",
+            "add-left": "53%",
+
+            "name-font-type": "Lato",
+            "name-font-size": "10px",
+            "name-font-color": "#FFFFFF",
+            "name-left": "53%",
+            "name-top": "35%",
+
+            "loc-font-type": "Roboto",
+            "loc-font-size": "7px",
+            "loc-font-color": "#FFFFFF",
+            "loc-top": "48%",
+            "loc-left": "53%",
+
+            "email-font-type": "Roboto",
+            "email-font-size": "7px",
+            "email-font-color": "#FFFFFF",
+            "email-top": "54%",
+            "email-left": "53%"
+        }
+
+
+    ]
+}

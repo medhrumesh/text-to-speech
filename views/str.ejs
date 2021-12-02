@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex;">
+
+    
+    <a href="/getStream/<%= data %>"><button>stream</button></a>
+    <!-- <a href="/https://mr-promotion.s3.ap-south-1.amazonaws.com/company-video/output2.mp4"> -->
+        <button value="<%= data %>"  id="download">
+            download
+        </button></a>
+    <!-- </a> -->
+     
+
+    </div>
+</body>
+
+<script>
+$("#download").on('click', ()=>{
+    const val = $('#download').val()
+    console.log(val)
+})
+    
+</script>
+</html>

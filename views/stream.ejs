@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/shareon/dist/shareon.min.css" rel="stylesheet" /> -->
+
+    <title>Document</title>
+    <style>
+
+        #videPlayer {
+            width: 90%;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 12px 12px 20px #000000ba;
+        }
+
+        #download-vid-btn {
+            margin: 20px;
+            align-items: center;
+        }
+
+        .fa,
+        .fab {
+            padding: 12px 7px;
+            border-radius: 7px;
+            font-size: 20px;
+            width: 32px;
+            /* height: 32px; */
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+
+        .btn {
+            background: #2D3039;
+            color: white;
+            padding: 13px 20px;
+            border: 0;
+            border-radius: 7px;
+        }
+
+        button,
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            color: #777;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: 2px;
+            text-transform: capitalize;
+            text-decoration: none;
+            white-space: nowrap;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        button:hover,
+        .button:hover {
+            border-color: #cdd;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="videPlayer" controls autoplay>
+        <source src="http://65.0.77.129/web_app/wockhardt_web_app/public/videos/<%= data %>" type="video/mp4">
+    </video>
+    <div>
+        <button id="download-vid-btn" class="btn btn-primary"><a href="" id="d-video" download>Download Video</a>
+        </button>
+    </div>
+</body>
+<script>
+    let dlink = "/downloadvideo/<%= data %>";
+    document.getElementById("d-video").href = dlink;
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+{
+    "error": true,
+    "message": "Fram List.",
+    "data": [
+        {
+            "image": "http://52.66.231.200/wockhardtexercise/images/endscreen.png",
+            "fram-no": "2",
+            "add-font-type": "Poppins",
+            "add-font-size": "10px",
+            "add-font-color": "#000",
+            "add-top": "120",
+            "add-left": "12%",
+
+            "loc-font-type": "Poppins",
+            "loc-font-size": "10px",
+            "loc-font-color": "#000",
+            "loc-top": "127",
+            "loc-left": "12%",
+
+            "email-font-type": "Poppins",
+            "email-font-size": "10px",
+            "email-font-color": "#000",
+            "email-top": "133",
+            "email-left": "12%",
+
+            "web-font-type": "Poppins",
+            "web-font-size": "10px",
+            "web-font-color": "#000",
+            "web-top": "140",
+            "web-left": "12%",
+
+            "mobile-font-type": "Poppins",
+            "mobile-font-size": "10px",
+            "mobile-font-color": "#000",
+            "mobile-top": "147",
+            "mobile-left": "12%",
+
+            "name-font-type": "Poppins",
+            "name-font-size": "18px",
+            "name-font-color": "#000",
+            "name-left": "7%",
+            "name-top": "105"
+        }
+    ]
+}

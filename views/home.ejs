@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/image-canvas.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.1.0/cropper.css">
+</head>
+
+<body>
+
+    <section id="rdioscreen">
+        <form id="idForm">
+            <input type="radio" onClick="idForm()" name="choice" value="dr" checked>
+            <input type="radio" onClick="idForm()" name="choice" value="mr">
+        </form>
+    </section>
+
+    <section id="userFormDiv">
+        <h2 style="margin-top: 50px; ">Register/ fill deatails</h2>
+        <form id="userForm" onsubmit="submitForm(event)">
+            <select name="division" id="division" class="form-control custom_feild" onchange="getzsm()" required>
+                <option value="" disabled selected>Select Division</option>
+                <option value="Metabolic">Metabolic</option>
+                <option value="Diabetes">Diabetes</option>
+            </select>
+
+            <select name="zsm" id="zsm" class="form-control custom_feild" onchange="getrm()" required>
+                <option value="">Select ZSM</option>
+            </select>
+
+            <select name="rm" id="rm" class="form-control custom_feild" onchange="gettm()" required>
+                <option value="">Select RM</option>
+            </select>
+            <select name="tm" id="tm" class="form-control custom_feild" onchange="gethq()" required>
+                <option value="">Select TM</option>
+            </select>
+            <select name="hq" id="hq" class="form-control custom_feild" required>
+                <option value="">Select HQ</option>
+            </select>
+            <button type="submit" class="btnnext registerbtn">Next</button>
+        </form>
+    </section>
+
+    <section id="imageFormDiv" enctype='multipart/form-data'>
+        <form id="imageForm" onsubmit="imageFormSubmit(event)">
+            <select name="lang" id="lang" class="dropdown_box" onchange="chooselang()" required>
+                <option value="">Choose Language</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="bengali">Bengali</option>
+                <option value="gujarati">Gujarati</option>
+                <option value="kannada">Kannada</option>
+                <option value="malayalam">Malayalam</option>
+                <option value="marathi">Marathi</option>
+                <option value="oriya">Oriya</option>
+                <option value="tamil">Tamil</option>
+                <option value="telugu">Telugu</option>
+            </select>
+            <input type="text" class="form-control custom_feild" placeholder="Enter Doctor Name" required>
+            <input type="text" class="form-control custom_feild" placeholder="Enter Clinic/Hospital Name" required>
+            <input type="text" class="form-control custom_feild" placeholder="Enter Clinic/Hospital Address" required>
+
+            <input type="text" class="form-control custom_feild" placeholder="Enter City" required>
+            <input type="file" id="myfile" name="image" accept="image/*" class="custom-file-input">
+
+            <button type="submit" class="btnnext registerbtn" style="margin-top: 10px;">Next</button>
+        </form>
+    </section>
+
+    <section id="crop-and-set">
+        <img alt="My_Logo" src="" id="imgID" onload="cropImg()">
+        <button type="button" class="btn btn-primary" onclick="crop(event)">NEXT</button>
+    </section>
+
+    <section id="af-c-image">
+        <canvas id="canvas" style="border: 1px solid; display: none;" class="final-canvas">
+            not support.
+        </canvas>
+        <button type="button" class="btn btn-primary" id="download-img-btn">DOWNLOAD IMAGE</button>
+        <button type="button" class="btn btn-primary" id="download-vid-btn">GENERATE VIDEO</button>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touch/1.1.0/jquery.touch.min.js"
+        integrity="sha512-aIllT5ONVk5YjYosfycKuUdZwGll1U9LRgBvNNagocaLMmwVPJ0cmydLEjNN6LQvDGa8eDe7sW4Ug138240UyQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/3.1.6/cropper.min.js"></script>
+    <script type="text/javascript" src="/js/frameHandler.js"></script>
+    <script type="text/javascript" src="/js/routing.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <!-- <script type="text/javascript" src="/js/image-canvas.js"></script> -->
+</body>
+
+</html>
