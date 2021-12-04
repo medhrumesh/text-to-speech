@@ -15,7 +15,7 @@ const aws = require('aws-sdk')
 const path = require('path')
 const mime = require('mime');
 const request = require('request')
-
+var util = require('util');
 const getM = (req, res) => {
   res.render("index");
   // res.render("home");
@@ -231,8 +231,10 @@ const gethq = async (req, res) => {
   }
 };
 
-const gTTS = require('gtts');
-// const say = require('say')
+// const gTTS = require('gtts');
+const say = require('say')
+const textToSpeech = require("@google-cloud/text-to-speech")
+const client = new textToSpeech.TextToSpeechClient()
 const genVid = async (req, res) => {
   try {
 
@@ -265,8 +267,8 @@ const genVid = async (req, res) => {
     var uid = req.body.uid;
     console.log("uiddddddddddddddddddddd : " + uid);
     let user_main_langauge = await Doctor.findOne({ _id: req.body.uid })
-    console.log("doctor name is", user_main_langauge.doctor)
-    var gtts = new gTTS("doctor name is" + user_main_langauge.doctor_name, 'en');
+    console.log("hello, i am doctor ", user_main_langauge.doctor)
+    // var gtts = new gTTS("hello, i am doctor " + user_main_langauge.doctor_name, 'en');
 
 
     console.log("uiddddddddddddddddddddd################ : ");
@@ -276,35 +278,29 @@ const genVid = async (req, res) => {
     // console.log("user img is" + userImg)
     //file names:
     var dr_audio = "./public/videos/" + Date.now() + "_draud.mp3"
-    var dr_audio_txt = + Date.now() + "_draud.mp3"
-
     var img_vid_path = Date.now() + "_img.mp4";
     var img_vid = "./public/videos/" + Date.now() + "_img.mp4";
-    var vid_vid = "./public/videos/" + Date.now() + "_vid.mkv";
+    var vid_vid = "./public/videos/" + Date.now() + "_vid.mp4";
     var aud_vid = "./public/videos/" + Date.now() + "_aud.mp4";
     var fil_vid = "./public/videos/" + Date.now() + "_fil.txt";
     var def_vid = user_main_langauge.language + ".mp4";
     var def_aud = "./public/videos/" + user_main_langauge.language + ".mp3";
-    var def_last_aud = "./public/videos/" + Date.now() + "_deflast.mp3";
-    var temp = "./public/videos/128k.mp3"
     var last_aud = "./public/videos/" + Date.now() + "_lastaud.mp3";
     var final_aud = "./public/videos/" + Date.now() + "_finalaud.mp3";
+  
 
-  //  say.getInstalledVoices((err, cb)=>{
-  //    console.log(cb)
-  //  })
+    const request = {
+      input: { text: "hello, i am doctor " + user_main_langauge.doctor_name },
+      // Select the language and SSML voice gender (optional)
+      voice: { languageCode: 'pa-IN', name: "pa-IN-Wavenet-C" },
+      // select the type of audio encoding
+      audioConfig: { audioEncoding: 'MP3' },
+    };
+    
+    const [resp] = await client.synthesizeSpeech(request);
+    const writeFile = util.promisify(fs.writeFile);
+    await writeFile(dr_audio, resp.audioContent, 'binary');
 
-    // say.export("doctor name is" + user_main_langauge.doctor_name, 'Microsoft David Desktop', 0.75, dr_audio, (err) => {
-    //   if (err) {
-    //     return console.error(err)
-    //   }
-     
-    //   console.log('Text has been saved to hal.wav.')
-    // })
-    gtts.save(dr_audio, (err, result) => {
-      if (err) { throw new Error(err) }
-      console.log('succes doctor audio')
-    })
 
     var del_vid = [];
     del_vid.push(fileName);
@@ -314,15 +310,12 @@ const genVid = async (req, res) => {
     del_vid.push(fil_vid);
 
     file_content = "file " + def_vid + "\nfile " + img_vid_path + "\n";
-    // aud_content = "file " + def_aud + "\nfile " + dr_audio_txt + "\n";
     fs.writeFileSync(fil_vid, file_content);
-    // fs.writeFileSync(final_aud_file, aud_content);
-
 
     var video_len;
 
     if (req.body.language === 'english') {
-      video_len = 10
+      video_len = 8
     }
     else if (req.body.language === 'gujarati') {
       video_len = 14
@@ -351,15 +344,6 @@ const genVid = async (req, res) => {
     else if (req.body.language === 'malayalam') {
       video_len = 7
     }
-    // console.log("bpdy oin genvid: " + JSON.stringify(req.body));
-    // Doctor.findOneAndUpdate({ _id: uid }, { $set: { croped_file: req.file.filename } }, (err, docs) => {
-    //   if (err) throw new Error("error in save");
-    //   console.log("saved");  
-    // });
-    // console.log("doctor: "+ doctor);
-    // console.log("file is " + userImg)
-
-
 
     var cmd_img = `ffmpeg -loop 1 -i ${userImg} -c:v libx264 -t ${video_len} -pix_fmt yuv420p -vf scale=1920:1080  ${img_vid}`;
     exec(cmd_img, (error, stdout, stderr) => {
@@ -379,11 +363,7 @@ const genVid = async (req, res) => {
           // res.send("error: " + error);
         }
 
-
-
-        
-        
-        var final_aud_aud = `ffmpeg -i "concat:${dr_audio}|${def_aud}" -c:a libmp3lame -ab 128k ${final_aud}`;
+        var final_aud_aud = `ffmpeg -i ${dr_audio} -i ${def_aud} -filter_complex "[0:a]atrim=end=10,asetpts=N/SR/TB[begin];[0:a]atrim=start=10,asetpts=N/SR/TB[end];[begin][1:a][end]concat=n=3:v=0:a=1[a]" -map "[a]" ${final_aud}`
 
         exec(final_aud_aud, (error, stdout, stderr) => {
           // console.log("vid_vid " + vid_vid)
@@ -392,83 +372,82 @@ const genVid = async (req, res) => {
             console.log("error occurs at aud_aud " + error);
             // res.send("error: " + error);
           }
-        })
+          var last_aud_aud = `ffmpeg -i ${final_aud} -vn -ar 44100 -ac 2 -b:a 128k ${last_aud}`
 
-        
-        var last_aud_aud = `ffmpeg -i ${final_aud} -codec:a libmp3lame -qscale:a 5 ${last_aud}`;
+          exec(last_aud_aud, (error, stdout, stderr) => {
+            // console.log("vid_vid " + vid_vid)
+            // console.log("process started at cmd_vid");
+            if (error) {
+              console.log("error occurs at aud_aud " + error);
+              // res.send("error: " + error);
+            }
 
-        exec(last_aud_aud, (error, stdout, stderr) => {
-          // console.log("vid_vid " + vid_vid)
-          // console.log("process started at cmd_vid");
-          if (error) {
-            console.log("error occurs at aud_aud " + error);
-            // res.send("error: " + error);
-          }
-        })
+            console.log("success video without audio");
 
-        console.log("success video without audio");
-        var cmd_aud = `ffmpeg -i ${vid_vid} -i ${temp} -c copy -map 0:v:0 -map 1:a:0 ${aud_vid}`;
-        exec(cmd_aud, (error, stdout, stderr) => {
-          console.log("process started at smd_auth:" + aud_vid);
-          if (error) {
-            console.log("error occurs at cmd_aud: " + error);
-            // res.send("error: "+ error);
-          }
-          console.log("aws key is " + aud_vid)
-          // try {
-          // const fileContent = fs.readFileSync(aud_vid)
-          var aws_key = path.parse(aud_vid).base
-          //   console.log("aws key is " + aws_key)
-          //   var params = {
-          //     Bucket: process.env.S3_BUCKET,
-          //     Key: aws_key,
-          //     Body: fileContent,
-          //     ACL: 'public-read'
-          //     //got buffer by reading file path
-          //   };
-          //   const bucket = new aws.S3({
-          //     accessKeyId: process.env.AWS_ID,
-          //     secretAccessKey: process.env.AWS_SECRET,
-          //     // region: process.env.S3_REGION
-          //   });
-          //   bucket.putObject(params, function (err, data) {
-          //     console.log(err, data);
-          //   });
-          // } catch (error) {
-
-          // }
-          // console.log("success video with audio -> deleting");
-          //  fs.unlink(userImg, (err) => {
-          //    if (err) throw new Error;
-          //    console.log(userImg + "was deleted")
-          //  })
-          //  fs.unlink(img_vid, (err) => {
-          //    if (err) throw err;
-          //   console.log(img_vid + " was deleted");
-          //  });
-          //  fs.unlink(fil_vid, (err) => {
-          //    if (err) throw err;
-          //    console.log(fil_vid + " was deleted");
-          //  });
-          //  fs.unlink(vid_vid, (err) => {
-          //    if (err) throw err;
-          //    console.log(vid_vid + " was deleted");
-          //  });
-
-          // // res.redirect('/str')
-          res.json({ ok: true, name: aws_key });
-          setTimeout(() => {
-            console.log("in setinterval video");
-            del_vid.forEach(aud_vid => {
-              if (fs.existsSync(aud_vid)) {
-                fs.unlink(aud_vid, (err) => {
-                  if (err) throw err;
-                  console.log(aud_vid + " was deleted");
-                });
+            var cmd_aud = `ffmpeg -i ${vid_vid} -i ${last_aud} -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 ${aud_vid}`;
+            exec(cmd_aud, (error, stdout, stderr) => {
+              console.log("process started at smd_auth:" + aud_vid);
+              if (error) {
+                console.log("error occurs at cmd_aud: " + error);
+                // res.send("error: "+ error);
               }
-            });
-            del_vid.length = 0;
-          }, 600000);
+              console.log("aws key is " + aud_vid)
+              // try {
+              // const fileContent = fs.readFileSync(aud_vid)
+              var aws_key = path.parse(aud_vid).base
+              //   console.log("aws key is " + aws_key)
+              //   var params = {
+              //     Bucket: process.env.S3_BUCKET,
+              //     Key: aws_key,
+              //     Body: fileContent,
+              //     ACL: 'public-read'
+              //     //got buffer by reading file path
+              //   };
+              //   const bucket = new aws.S3({
+              //     accessKeyId: process.env.AWS_ID,
+              //     secretAccessKey: process.env.AWS_SECRET,
+              //     // region: process.env.S3_REGION
+              //   });
+              //   bucket.putObject(params, function (err, data) {
+              //     console.log(err, data);
+              //   });
+              // } catch (error) {
+
+              // }
+              // console.log("success video with audio -> deleting");
+              //  fs.unlink(userImg, (err) => {
+              //    if (err) throw new Error;
+              //    console.log(userImg + "was deleted")
+              //  })
+              //  fs.unlink(img_vid, (err) => {
+              //    if (err) throw err;
+              //   console.log(img_vid + " was deleted");
+              //  });
+              //  fs.unlink(fil_vid, (err) => {
+              //    if (err) throw err;
+              //    console.log(fil_vid + " was deleted");
+              //  });
+              //  fs.unlink(vid_vid, (err) => {
+              //    if (err) throw err;
+              //    console.log(vid_vid + " was deleted");
+              //  });
+
+              // // res.redirect('/str')
+              res.json({ ok: true, name: aws_key });
+              setTimeout(() => {
+                console.log("in setinterval video");
+                del_vid.forEach(aud_vid => {
+                  if (fs.existsSync(aud_vid)) {
+                    fs.unlink(aud_vid, (err) => {
+                      if (err) throw err;
+                      console.log(aud_vid + " was deleted");
+                    });
+                  }
+                });
+                del_vid.length = 0;
+              }, 600000);
+            })
+          })
         })
       })
     })

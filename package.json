@@ -12,6 +12,8 @@
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
     "@ffprobe-installer/ffprobe": "^1.1.0",
+    "@google-cloud/text-to-speech": "^3.3.1",
+    "audioconcat": "^0.1.4",
     "aws-sdk": "^2.927.0",
     "body-parser": "^1.19.0",
     "child_process": "^1.0.2",
@@ -36,6 +38,7 @@
     "path": "^0.12.7",
     "request": "^2.88.2",
     "say": "^0.16.0",
+    "util": "^0.12.4",
     "videoshow": "^0.1.12"
   }
 }
